@@ -6,7 +6,8 @@ ENV ALPINE_VERSION=3.11 \
 
 # PATHS
 ENV PYTHON_PATH=/usr/local/bin/ \
-    PATH="/usr/local/lib/python$PYTHON_VERSION/bin/:/usr/local/lib/pyenv/versions/$PYTHON_VERSION/bin:${PATH}" \
+    PATH="/usr/local/lib/python$PYTHON_VERSION/bin/:/usr/local/lib/pyenv/versions/$PYTHON_VERSION/bin:${PATH}"
+
     # These are always installed.
     #   * dumb-init: a proper init system for containers, to reap zombie children
     #   * musl: standard C library
@@ -16,7 +17,7 @@ ENV PYTHON_PATH=/usr/local/bin/ \
     #   * bash: so we can access /bin/bash
     #   * git: to ease up clones of repos
     #   * ca-certificates: for SSL verification during Pip and easy_install
-    PACKAGES="\
+ARG PACKAGES="\
     dumb-init \
     musl \
     libc6-compat \
@@ -31,9 +32,10 @@ ENV PYTHON_PATH=/usr/local/bin/ \
     libpq \
     libxslt-dev \
     libxml2-dev \
-    " \
+    "
+
     # PACKAGES needed to built python
-    PYTHON_BUILD_PACKAGES="\
+ARG PYTHON_BUILD_PACKAGES="\
     bzip2-dev \
     coreutils \
     dpkg-dev dpkg \
