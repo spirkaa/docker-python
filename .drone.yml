@@ -4,10 +4,12 @@ type: docker
 name: default
 
 steps:
-- name: build
-  image: plugins/docker
-  settings:
-    repo: registry.home.devmem.ru/gia-api/python
-    registry: registry.home.devmem.ru
-    tags:
-    - latest
+  - name: build
+    image: plugins/docker
+    settings:
+      repo: registry.home.devmem.ru/python
+      registry: registry.home.devmem.ru
+      dockerfile: ./3.7/Dockerfile
+      tags:
+        - ${DRONE_COMMIT_SHA:0:8}
+        - 3.7-alpine

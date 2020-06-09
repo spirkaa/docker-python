@@ -1,8 +1,12 @@
-# Custom Python Docker Image
+# Custom Python Docker Images
 
-Based on [jfloff/alpine-python](https://hub.docker.com/r/jfloff/alpine-python)
+Based on [jfloff/alpine-python](https://hub.docker.com/r/jfloff/alpine-python) Dockerfiles
 
 Customizations:
 
 * lxml
 * brotli
+
+## Tags
+
+    registry.home.devmem.ru/python:3.7-alpine
