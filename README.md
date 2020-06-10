@@ -1,4 +1,4 @@
-# Custom Python Docker Images
+# Docker Images: Python
 
 Based on [jfloff/alpine-python](https://hub.docker.com/r/jfloff/alpine-python) Dockerfiles
 

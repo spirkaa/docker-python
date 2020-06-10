@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM registry.home.devmem.ru/alpine:3.11-cron
 
 # VERSIONS
 ENV ALPINE_VERSION=3.11 \
@@ -9,7 +9,6 @@ ENV PYTHON_PATH=/usr/local/bin/ \
     PATH="/usr/local/lib/python$PYTHON_VERSION/bin/:/usr/local/lib/pyenv/versions/$PYTHON_VERSION/bin:${PATH}"
 
     # These are always installed.
-    #   * dumb-init: a proper init system for containers, to reap zombie children
     #   * musl: standard C library
     #   * lib6-compat: compatibility libraries for glibc
     #   * linux-headers: commonly needed, and an unusual package name from Alpine.
@@ -18,7 +17,6 @@ ENV PYTHON_PATH=/usr/local/bin/ \
     #   * git: to ease up clones of repos
     #   * ca-certificates: for SSL verification during Pip and easy_install
 ARG PACKAGES="\
-    dumb-init \
     musl \
     libc6-compat \
     linux-headers \
@@ -116,10 +114,6 @@ RUN set -eux ;\
 RUN set -eux ;\
     pip install --no-cache-dir -U pip wheel ;\
     pip install --no-cache-dir -U \
-        brotli==1.0.7 \
-        brotlipy==0.7.0 \
-        lxml==4.5.1
-
-# since we will be "always" mounting the volume, we can set this up
-ENTRYPOINT ["/usr/bin/dumb-init"]
-CMD ["python"]
+        brotli \
+        brotlipy \
+        lxml

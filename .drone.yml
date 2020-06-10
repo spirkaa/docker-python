@@ -11,5 +11,4 @@ steps:
       registry: registry.home.devmem.ru
       dockerfile: ./3.7/Dockerfile
       tags:
-        - ${DRONE_COMMIT_SHA:0:8}
         - 3.7-alpine
