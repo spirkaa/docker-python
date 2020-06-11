@@ -4,7 +4,7 @@ type: docker
 name: default
 
 steps:
-  - name: build
+  - name: build 3.7
     image: plugins/docker
     settings:
       repo: registry.home.devmem.ru/python
@@ -12,3 +12,12 @@ steps:
       dockerfile: ./3.7/Dockerfile
       tags:
         - 3.7-alpine
+
+  - name: build 3.8
+    image: plugins/docker
+    settings:
+      repo: registry.home.devmem.ru/python
+      registry: registry.home.devmem.ru
+      dockerfile: ./3.8/Dockerfile
+      tags:
+        - 3.8-alpine

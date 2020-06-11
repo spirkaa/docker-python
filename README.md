@@ -10,3 +10,4 @@ Customizations:
 ## Tags
 
     registry.home.devmem.ru/python:3.7-alpine
+    registry.home.devmem.ru/python:3.8-alpine
