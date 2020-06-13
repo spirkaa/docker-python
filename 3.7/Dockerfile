@@ -111,9 +111,14 @@ RUN set -eux ;\
     apk del --no-cache --purge .build-deps ;\
     rm -rf /var/cache/apk/*
 
-RUN set -eux ;\
-    pip install --no-cache-dir -U pip wheel ;\
-    pip install --no-cache-dir -U \
+RUN set -eux \
+    && apk add --no-cache --virtual .build-deps \
+        postgresql-dev \
+    && pip install --no-cache-dir -U pip wheel \
+    && pip install --no-cache-dir -U \
         brotli \
         brotlipy \
-        lxml
+        lxml \
+        psycopg2 \
+    && apk del --no-cache --purge .build-deps \
+    && rm -rf /var/cache/apk/*
