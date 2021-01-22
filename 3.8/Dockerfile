@@ -2,7 +2,7 @@ FROM registry.home.devmem.ru/alpine:3.11-cron
 
 # VERSIONS
 ENV ALPINE_VERSION=3.11 \
-    PYTHON_VERSION=3.8.3
+    PYTHON_VERSION=3.8.7
 
 # PATHS
 ENV PYTHON_PATH=/usr/local/bin/ \
