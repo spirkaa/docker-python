@@ -1,13 +1,8 @@
-# Docker Images: Python
+# Docker: Python
 
-Based on [jfloff/alpine-python](https://hub.docker.com/r/jfloff/alpine-python) Dockerfiles
+Образ Python на основе докерфайлов [jfloff/alpine-python](https://github.com/jfloff/alpine-python) с предустановленными пакетами lxml, brotli, psycopg2.
 
-Customizations:
-
-* lxml
-* brotli
-
-## Tags
+## Тэги
 
     registry.home.devmem.ru/python:3.9-alpine
     registry.home.devmem.ru/python:3.8-alpine
