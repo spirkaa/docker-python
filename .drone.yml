@@ -12,12 +12,3 @@ steps:
       dockerfile: ./3.9/Dockerfile
       tags:
         - 3.9-alpine
-
-  - name: build 3.8
-    image: plugins/docker
-    settings:
-      repo: registry.home.devmem.ru/python
-      registry: registry.home.devmem.ru
-      dockerfile: ./3.8/Dockerfile
-      tags:
-        - 3.8-alpine

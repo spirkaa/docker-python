@@ -5,4 +5,3 @@
 ## Тэги
 
     registry.home.devmem.ru/python:3.9-alpine
-    registry.home.devmem.ru/python:3.8-alpine
