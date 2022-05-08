@@ -5,3 +5,5 @@
 ## Тэги
 
     git.devmem.ru/cr/python:3.10-bullseye-venv-builder
+
+    ghcr.io/spirkaa/python:3.10-bullseye-venv-builder
