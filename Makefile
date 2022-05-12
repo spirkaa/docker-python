@@ -4,7 +4,7 @@ export DOCKER_BUILDKIT=1
 
 PYTHON_VERSION=3.10
 
-IMAGE_FULLNAME=git.devmem.ru/cr/python
+IMAGE_FULLNAME=git.devmem.ru/projects/python
 IMAGE_TAG=${PYTHON_VERSION}-bullseye-venv-builder
 IMAGE=${IMAGE_FULLNAME}:${IMAGE_TAG}
 
