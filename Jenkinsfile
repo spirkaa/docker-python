@@ -31,10 +31,12 @@ pipeline {
   stages {
     stage('Build 3.10 image (cache)') {
       when {
+        branch 'main'
         not {
           anyOf {
             triggeredBy 'TimerTrigger'
             triggeredBy cause: 'UserIdCause'
+            changeRequest()
           }
         }
       }
@@ -51,6 +53,7 @@ pipeline {
 
     stage('Build 3.10 image (no cache)') {
       when {
+        branch 'main'
         anyOf {
           triggeredBy 'TimerTrigger'
           triggeredBy cause: 'UserIdCause'
