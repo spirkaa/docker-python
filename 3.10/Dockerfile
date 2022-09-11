@@ -14,6 +14,8 @@ RUN set -eux \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -eux \
-    && python -m venv /opt/venv
+    && python -m venv /opt/venv \
+    && . /opt/venv/bin/activate \
+    && pip install --no-cache-dir --upgrade pip wheel
 
 ENV PATH="/opt/venv/bin:$PATH"
