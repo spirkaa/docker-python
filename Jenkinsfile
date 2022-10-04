@@ -19,7 +19,7 @@ pipeline {
     IMAGE_BASENAME = 'python'
     IMAGE_FULLNAME = "${REGISTRY}/${IMAGE_OWNER}/${IMAGE_BASENAME}"
     IMAGE_TAG = '3.10-bullseye-venv-builder'
-    DOCKERFILE = '3.10/Dockerfile'
+    DOCKERFILE = 'venv-builder/Dockerfile'
     LABEL_AUTHORS = 'Ilya Pavlov <piv@devmem.ru>'
     LABEL_TITLE = 'Python'
     LABEL_DESCRIPTION = 'Python'
@@ -29,7 +29,7 @@ pipeline {
   }
 
   stages {
-    stage('Build 3.10 image (cache)') {
+    stage('Build venv-builder image (cache)') {
       when {
         branch 'main'
         not {
@@ -51,7 +51,7 @@ pipeline {
       }
     }
 
-    stage('Build 3.10 image (no cache)') {
+    stage('Build venv-builder image (no cache)') {
       when {
         branch 'main'
         anyOf {

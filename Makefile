@@ -2,32 +2,37 @@
 
 export DOCKER_BUILDKIT=1
 
-PYTHON_VERSION=3.10
+TARGETS=venv-builder playwright-firefox
 
-IMAGE_FULLNAME=git.devmem.ru/projects/python
-IMAGE_TAG=${PYTHON_VERSION}-bullseye-venv-builder
-IMAGE=${IMAGE_FULLNAME}:${IMAGE_TAG}
+IMAGE_FULLNAME=ghcr.io/spirkaa/python
+IMAGE_TAG_PREFIX=3.10-bullseye
 
 default: build
 
 build:
-	@docker build \
-		--cache-from ${IMAGE} \
-		--tag ${IMAGE} \
-		-f ${PYTHON_VERSION}/Dockerfile .
+	@for target in ${TARGETS}; do \
+		docker build \
+			--cache-from ${IMAGE_FULLNAME}:${IMAGE_TAG_PREFIX}-$$target \
+			--tag ${IMAGE_FULLNAME}:${IMAGE_TAG_PREFIX}-$$target \
+			-f $$target/Dockerfile .; \
+	done
 
 build-nocache:
-	@docker build \
-		--pull --no-cache \
-		--tag ${IMAGE} \
-		-f ${PYTHON_VERSION}/Dockerfile .
+	@for target in ${TARGETS}; do \
+		docker build \
+			--pull --no-cache \
+			--tag ${IMAGE_FULLNAME}:${IMAGE_TAG_PREFIX}-$$target \
+			-f $$target/Dockerfile .; \
+	done
 
 rmi:
-	@docker rmi ${IMAGE}
+	@for target in ${TARGETS}; do \
+		docker rmi ${IMAGE_FULLNAME}:${IMAGE_TAG_PREFIX}-$$target; \
+	done
 
 run:
 	@docker run \
 		--rm \
 		--interactive \
 		--tty \
-		${IMAGE}
+		${IMAGE_FULLNAME}:${IMAGE_TAG_PREFIX}-venv-builder
