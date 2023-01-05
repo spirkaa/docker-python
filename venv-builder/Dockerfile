@@ -1,6 +1,6 @@
-ARG PYTHON_IMAGE=python:3.10-slim-bullseye
+ARG BUILD_IMAGE=python:3.10-slim-bullseye
 
-FROM ${PYTHON_IMAGE}
+FROM ${BUILD_IMAGE}
 
 RUN set -eux \
     && apt-get update \
@@ -15,7 +15,7 @@ RUN set -eux \
 
 RUN set -eux \
     && python -m venv /opt/venv \
-    && . /opt/venv/bin/activate \
+    && PATH="/opt/venv/bin:$PATH" \
     && pip install --no-cache-dir --upgrade pip wheel
 
 ENV PATH="/opt/venv/bin:$PATH"

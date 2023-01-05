@@ -1,6 +1,6 @@
-ARG PYTHON_IMAGE=python:3.10-slim-bullseye
+ARG BUILD_IMAGE=python:3.10-slim-bullseye
 
-FROM ${PYTHON_IMAGE}
+FROM ${BUILD_IMAGE}
 
 RUN set -eux \
     && apt-get update \

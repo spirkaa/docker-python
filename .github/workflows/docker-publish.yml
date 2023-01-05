@@ -25,11 +25,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        include:
-          - dockerfile: playwright-firefox/Dockerfile
-            tag: 3.10-bullseye-playwright-firefox
-          - dockerfile: venv-builder/Dockerfile
-            tag: 3.10-bullseye-venv-builder
+        os: [bullseye]
+        version: ['3.10', '3.11']
+        target: [venv-builder, playwright-firefox]
 
     steps:
       - name: Checkout
@@ -52,14 +50,16 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            ${{ matrix.tag }}
+            ${{ matrix.version }}-${{ matrix.os }}-${{ matrix.target }}
 
       - name: Build and push image
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ${{ matrix.dockerfile }}
+          file: ${{ matrix.target }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            BUILD_IMAGE=python:${{ matrix.version }}-slim-${{ matrix.os }}
