@@ -1,9 +1,12 @@
-ARG BUILD_IMAGE=python:3.10-slim-bullseye
+# hadolint global ignore=DL3006,DL3008,DL3013
+
+ARG BUILD_IMAGE=python:3.11-slim-bullseye
 
 FROM ${BUILD_IMAGE}
 
-RUN set -eux \
-    && apt-get update \
+SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
+
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libgtk-3-0 \
         libasound2 \
@@ -34,6 +37,5 @@ RUN set -eux \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
 
-RUN set -eux \
-    && pip install --no-cache-dir --upgrade pip wheel playwright \
+RUN pip install --no-cache-dir --upgrade pip wheel playwright \
     && playwright install firefox

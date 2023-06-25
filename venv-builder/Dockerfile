@@ -1,11 +1,15 @@
-ARG BUILD_IMAGE=python:3.10-slim-bullseye
+# hadolint global ignore=DL3006,DL3008,DL3013
+
+ARG BUILD_IMAGE=python:3.11-slim-bullseye
 
 FROM ${BUILD_IMAGE}
 
-RUN set -eux \
-    && apt-get update \
+SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
+
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
+        git \
         libldap2-dev \
         libsasl2-dev \
         libpq-dev \
@@ -13,8 +17,7 @@ RUN set -eux \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
 
-RUN set -eux \
-    && python -m venv /opt/venv \
+RUN python -m venv /opt/venv \
     && PATH="/opt/venv/bin:$PATH" \
     && pip install --no-cache-dir --upgrade pip wheel
 
