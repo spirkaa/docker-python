@@ -32,11 +32,11 @@ pipeline {
         axes {
           axis {
             name 'OS'
-            values 'bullseye'
+            values 'bookworm'
           }
           axis {
             name 'VERSION'
-            values '3.10', '3.11'
+            values '3.11'
           }
           axis {
             name 'TARGET'

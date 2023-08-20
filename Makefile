@@ -2,8 +2,8 @@
 
 export DOCKER_BUILDKIT=1
 
-OS=bullseye
-VERSIONS=3.10 3.11
+OS=bookworm
+VERSIONS=3.11
 TARGETS=venv-builder playwright-firefox
 
 IMAGE_FULLNAME=ghcr.io/spirkaa/python
