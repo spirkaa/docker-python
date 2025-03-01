@@ -8,11 +8,11 @@
 ## Тэги
 
 ```shell
-ghcr.io/spirkaa/python:3.11-bookworm-playwright-firefox
-ghcr.io/spirkaa/python:3.11-bookworm-venv-builder
+ghcr.io/spirkaa/python:3.13-bookworm-playwright-firefox
+ghcr.io/spirkaa/python:3.13-bookworm-venv-builder
 ```
 
 ```shell
-git.devmem.ru/projects/python:3.11-bookworm-playwright-firefox
-git.devmem.ru/projects/python:3.11-bookworm-venv-builder
+git.devmem.ru/projects/python:3.13-bookworm-playwright-firefox
+git.devmem.ru/projects/python:3.13-bookworm-venv-builder
 ```

@@ -3,7 +3,7 @@
 export DOCKER_BUILDKIT=1
 
 OS=bookworm
-VERSIONS=3.11
+VERSIONS=3.13
 TARGETS=venv-builder playwright-firefox
 
 IMAGE_FULLNAME=ghcr.io/spirkaa/python
@@ -44,4 +44,4 @@ run:
 		--rm \
 		--interactive \
 		--tty \
-		${IMAGE_FULLNAME}:3.11-${OS}-venv-builder
+		${IMAGE_FULLNAME}:3.13-${OS}-venv-builder

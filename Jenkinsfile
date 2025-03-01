@@ -36,7 +36,7 @@ pipeline {
           }
           axis {
             name 'VERSION'
-            values '3.11'
+            values '3.13'
           }
           axis {
             name 'TARGET'
