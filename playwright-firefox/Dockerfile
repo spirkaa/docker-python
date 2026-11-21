@@ -8,6 +8,7 @@ SHELL [ "/bin/bash", "-euxo", "pipefail", "-c" ]
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        libatomic1 \
         libgtk-3-0 \
         libasound2 \
         libx11-6 \
